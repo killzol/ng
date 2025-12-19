@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Quiz</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="login" class="screen">
+    <h1>Новый год друзья</h1>
+    <input id="nickname" placeholder="Представься долбоебик">
+    <button onclick="join()">присоедениться</button>
+</div>
+
+<div id="game" class="screen hidden">
+    <div id="timer"></div>
+    <h2 id="question"></h2>
+    <div id="answers"></div>
+</div>
+
+<div id="leaderboard" class="screen hidden">
+    <h2>🏆 Лидеры</h2>
+    <ul id="leaders"></ul>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
