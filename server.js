@@ -8,29 +8,11 @@ const io = new Server(server);
 
 app.use(express.static("public"));
 
-let players = {};
-
 io.on("connection", socket => {
-
-    socket.on("join", nickname => {
-        players[socket.id] = {
-            name: nickname,
-            score: 0
-        };
-        io.emit("players", players);
-    });
-
-    socket.on("answer", isCorrect => {
-        if (isCorrect) players[socket.id].score++;
-        io.emit("players", players);
-    });
-
-    socket.on("disconnect", () => {
-        delete players[socket.id];
-        io.emit("players", players);
-    });
+    console.log("User connected:", socket.id);
 });
 
-server.listen(3000, () => {
-    console.log("Quiz: http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log("Server started on port", PORT);
 });
